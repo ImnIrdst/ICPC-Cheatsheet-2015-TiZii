@@ -3,7 +3,7 @@
 * Phrase Evaluation
 * Fibonacci Matrix (Not Necessary)
 * Min Cost Max Flow
-* Coordinate Compression
+* Coordinate Compression (UVa 1092)
 
 ## Links
 
