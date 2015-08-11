@@ -1,6 +1,6 @@
 ## TODO
 
-* Phrase Evaluation
+* Expression Evaluation
 * Fibonacci Matrix (Not Necessary)
 * Min Cost Max Flow
 * Coordinate Compression (UVa 1092)
