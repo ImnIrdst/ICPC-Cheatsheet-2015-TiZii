@@ -3,7 +3,7 @@ struct DisJointSet{
 
 	DisJointSet(int n){
 		par.assign(n,-1); rnk.assign(n,0); cnt.assign(n,1); //par==parent
-		numOfsets=n; // if wanna count number of disjoint sets
+		numOfsets=n; // if we wanna count number of disjoint sets
 	}
 
 	int Find(int a){
@@ -19,7 +19,7 @@ struct DisJointSet{
 			if(rnk[A]==rnk[B]) rnk[A]++;
 			par[B]=A;
 			cnt[A]+=cnt[B]; // if we wanna count each set size
-			numOfsets--; // if wanna count number of disjoint sets
+			numOfsets--; // if we wanna count number of disjoint sets
 		}
 		return cnt[A]; // if we wanna count each set size
 	}
