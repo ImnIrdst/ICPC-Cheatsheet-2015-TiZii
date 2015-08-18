@@ -4,7 +4,7 @@
 * Fibonacci Matrix (Not Necessary)
 * Min Cost Max Flow
 * Coordinate Compression (UVa 1092)
-* Strongly Connected Components
+* Strongly Connected Components (Tarjan or Kosaraju's Algorithm)
 
 ## Links
 
