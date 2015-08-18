@@ -5,6 +5,7 @@
 * Min Cost Max Flow
 * Coordinate Compression (UVa 1092)
 * Strongly Connected Components (Tarjan or Kosaraju's Algorithm)
+* print path for new LIS
 
 ## Links
 
