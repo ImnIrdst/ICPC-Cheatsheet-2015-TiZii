@@ -10,3 +10,7 @@
 ## Links
 
 * [Stanford Introduction to Competitive programming Course](http://web.stanford.edu/class/cs97si/)
+
+## Low Priority
+
+* Magic Square Construction
