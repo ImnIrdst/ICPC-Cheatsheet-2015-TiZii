@@ -1,5 +1,6 @@
 ## TODO
 
+* Inversion
 * Expression Evaluation
 * Fibonacci Matrix (Not Necessary)
 * Min Cost Max Flow
@@ -9,6 +10,7 @@
 * SPFA Algorithm (Shortest Path with Negative Cycle)
 * Sparse Table for Static RMQ
 * Interval Tree
+* Basic Geometry
 
 ## Links
 
