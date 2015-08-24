@@ -5,7 +5,10 @@
 * Min Cost Max Flow
 * Coordinate Compression (UVa 1092)
 * Strongly Connected Components (Tarjan or Kosaraju's Algorithm)
-* print path for new LIS
+* Print Path for new LIS
+* SPFA Algorithm (Shortest Path with Negative Cycle)
+* Sparse Table for Static RMQ
+* Interval Tree
 
 ## Links
 
@@ -14,3 +17,4 @@
 ## Low Priority
 
 * Magic Square Construction
+* Pollard's rho algorithm (UVa 11476)
