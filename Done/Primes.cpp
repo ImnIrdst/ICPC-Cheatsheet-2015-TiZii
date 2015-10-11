@@ -15,8 +15,7 @@ void genprime(){
     isp.set(); isp[0]=isp[1]=0;
     for(int64 i=2 ; i<MAX; i++){
         if(isp[i]){ primes.push_back(i);
-            for(int64 j=i*i ; j<MAX ; j+=i) 
-                isp[j]=0;
+            for(int64 j=i*i ; j<MAX ; j+=i) isp[j]=0;
         }
     }
 }

@@ -11,6 +11,8 @@
 * Sparse Table for Static RMQ
 * Interval Tree
 * Basic Geometry
+* Max Subrecangle Sum
+
 
 ## Links
 
@@ -18,5 +20,6 @@
 
 ## Low Priority
 
+* Infix and postfix to Tree
 * Magic Square Construction
 * Pollard's rho algorithm (UVa 11476)
