@@ -11,11 +11,11 @@ const int maxn = 1000;
 struct st{
 	int ants, dpos, dm;
 	st( int ants = 0, int dpos = 0, int dm = 0) : ants(ants) , dpos(dpos), dm(dm) {}
-	bool operator < ( const st & in ) const {		
+	bool operator < ( const st & in ) const {
 		if( ants == in.ants && dpos == in.dpos) return dm < in.dm;
 		if( ants == in.ants ) return dpos < in.dpos;
 		return ants < in.ants;
-	}	
+	}
 };
 
 char str[10];
@@ -32,13 +32,13 @@ int dy[] = {-1,0,1,0};
 const int bsize = 4;
 
 int main(){
-	
+
 	int T; cin >> T;
 	for(int cnt=0 ; cnt<T ; cnt++){
 		int ants = 0, dpos = 0, dm = 0, pos =0;
 		for(int i=0 ; i<bsize ; i++){
 			scanf("%s", str );
-			for(int j=0 ; j<bsize ; j++){					
+			for(int j=0 ; j<bsize ; j++){
 				if( str[j] == 'X' ) {
 					ants |= (1<< pos);
 				}
@@ -60,12 +60,12 @@ int main(){
 				resp = dist[cur]; break;
 			}
 			int y = cur.dpos / bsize;
-			int x = cur.dpos % bsize;			
+			int x = cur.dpos % bsize;
 			REP(i,0,4){
 				int ny = y + dy[i];
 				int nx = x + dx[i];
 				if( ny < 0 || ny >= bsize || nx < 0 || nx >= bsize ) continue;
-				int ndpos = (nx + (ny * bsize));				
+				int ndpos = (nx + (ny * bsize));
 				int nants = cur.ants;
 				int ndm = cur.dm;
 				if( cur.dm & (1<<cur.face) ){
@@ -84,6 +84,6 @@ int main(){
 		if( resp == -1) cout << "impossible" << endl;
 		else cout << resp << endl;
 	}
-	
+
 	return 0;
 }
