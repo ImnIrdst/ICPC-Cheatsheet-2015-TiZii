@@ -2,11 +2,12 @@ import java.util.*;
 
 public class Solution {
     static int[] dist;
-    static ArrayList<ToNode>[] adj;
+    static ArrayList<Link>[] graph;
     static final int INF = (int)1e6;
-    public static class ToNode {
+
+    public static class Link {
         public int v, w;
-        public ToNode(int v, int w) {
+        public Link(int v, int w) {
             this.v = v;
             this.w = w;
         }
@@ -14,6 +15,7 @@ public class Solution {
 
     public static class QEntry {
         public int u, cost;
+        
         public QEntry(int u, int cost) {
             this.u = u;
             this.cost = cost;
@@ -36,8 +38,8 @@ public class Solution {
             QEntry u = q.poll();
             if(u.u == t) return u.cost;
             if(u.cost > dist[u.u]) continue;
-            for(int i=0 ; i<adj[u.u].size() ; i++) {
-                QEntry v = new QEntry(adj[u.u].get(i).v, u.cost+adj[u.u].get(i).w);
+            for(int i=0 ; i<graph[u.u].size() ; i++) {
+                QEntry v = new QEntry(graph[u.u].get(i).v, u.cost+graph[u.u].get(i).w);
                 if(dist[v.u] > v.cost) {
                     dist[v.u] = v.cost;
                     q.add(v);
@@ -54,16 +56,16 @@ public class Solution {
 
         while (tc-->0) {
             int n = sc.nextInt();
-            adj = new ArrayList[n]; dist = new int[n];
-            for(int i=0 ; i<n ; i++) adj[i] = new ArrayList<>();
+            graph = new ArrayList[n]; dist = new int[n];
+            for(int i=0 ; i<n ; i++) graph[i] = new ArrayList<>();
 
             int m = sc.nextInt();
             while (m-->0) {
                 int u = sc.nextInt()-1;
                 int v = sc.nextInt()-1;
                 int w = sc.nextInt();
-                adj[u].add(new ToNode(v,w));
-                adj[v].add(new ToNode(u,w));
+                graph[u].add(new Link(v,w));
+                graph[v].add(new Link(u,w));
             }
 
             int s = sc.nextInt()-1;

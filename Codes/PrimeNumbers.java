@@ -19,7 +19,8 @@ public class PrimeNumbers {
 		}
 
 		public void genPrimes(){
-			Arrays.fill(isp, false);
+			Arrays.fill(isp, true);
+			isp[0] = isp[1] = false;
 			for(long i=2 ; i<MAX; i++){
 				if(isp[(int)i]){ primes.add((int)i);
 					for(long j=i*i ; j<MAX ; j+=i) isp[(int)j] = false;
