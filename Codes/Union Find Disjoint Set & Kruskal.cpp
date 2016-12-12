@@ -1,9 +1,19 @@
-struct DisJointSet{
-	vector<int> par,rnk,cnt; int numOfsets;
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <sstream>
+#include <string>
 
-	DisJointSet(int n){
+using namespace std;
+
+typedef vector<int> vi;
+
+struct DisJointSet {
+	vi par, rnk, cnt; int numOfSets;
+
+	DisJointSet(int n = 0){
 		par.assign(n,-1); rnk.assign(n,0); cnt.assign(n,1); //par==parent
-		numOfsets=n; // if we wanna count number of disjoint sets
+		numOfSets=n; // if we wanna count number of disjoint sets
 	}
 
 	int find(int a){
@@ -19,29 +29,81 @@ struct DisJointSet{
 			if(rnk[A]==rnk[B]) rnk[A]++;
 			par[B]=A;
 			cnt[A]+=cnt[B]; // if we wanna count each set size
-			numOfsets--; // if we wanna count number of disjoint sets
+			numOfSets--; // if we wanna count number of disjoint sets
 		}
 		return cnt[A]; // if we wanna count each set size
 	}
 };
 
-struct edge{ int u, v, w;
-	edge(int u=0, int v=0, int w=0):u(u), v(v), w(w){};
-	bool operator<(const edge& b) const {
-		if(w != b.w) return w < b.w;
-		if(v != b.v) return v < b.v; 
-		return u < b.u;
-	}
+struct Edge { int u, v, w;
+	Edge(int u=0, int v=0, int w=0):u(u), v(v), w(w){}
+	bool operator<(const Edge& b) const { return w < b.w; } 
+	string toString(){ 
+		stringstream sstr;
+		sstr << u << "," << v << "," << w;
+		string str; sstr >> str;
+		return str;	
+	} //remove
 };
 
-int n, m, bit; vector<edge> e; vi marked;
+typedef vector<Edge> ve;
 
-int kruskal(){
-	DisJointSet djst(n); marked.clear();
-	sort(e.begin(), e.end()); int ans=0; int j=0;
-	for(int i=0; i<e.size() && j<n-1 ; i++){
-		if(djst.find(e[i].u) != djst.find(e[i].v)){
-			djst.uni(e[i].u, e[i].v); ans+=e[i].w; j++; marked.push_back(i);
+struct Kruskal {
+	ve edges; vi marked; DisJointSet st; 
+	Kruskal(int n, ve& edges):edges(edges) { st = DisJointSet(n); }
+	int run(){ int result; sort(edges.begin(), edges.end());
+		for (int i=0 ; i<edges.size() ; i++) { Edge e = edges[i];
+			if (st.find(e.u) != st.find(e.v)) {
+				st.uni(e.u, e.v); result += e.w; marked.push_back(i);
+			}
 		}
+		return result;
 	}
-	return ans;}
+
+	void printSelectedEdges(){
+		cout << "MST edges:" << endl;
+		for(int i=0 ; i<marked.size() ; i++) {
+			Edge e = edges[marked[i]];
+			cout << e.toString() << endl;
+		}
+	} // remove
+};
+
+int main() {
+	int n, m;
+	cin >> n >> m;
+
+	ve edges;
+	for(int i=0 ; i<m ; i++) {
+		int u, v, w;
+		cin >> u >> v >> w;
+		edges.push_back(Edge(u, v, w));
+	}
+
+	for(int i=0 ; i<edges.size() ; i++) {
+		cout << edges[i].toString() << endl;
+	}
+
+	Kruskal kruskal(n, edges);
+	cout << kruskal.run() << endl;
+	kruskal.printSelectedEdges();
+}
+
+
+/*
+IN:
+5 6
+1 3 5
+4 5 0
+2 1 3
+3 2 1
+4 3 4
+4 2 2
+
+OUT:
+4,5,0
+3,2,1
+4,2,2
+2,1,3
+
+*/
